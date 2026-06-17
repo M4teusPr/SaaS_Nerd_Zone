@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nerd_Zone - Workspace</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="ph ph-game-controller brand-icon"></i>
+                <span>Nerd_Zone</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-target="view-dashboard">
+                    <i class="ph ph-squares-four"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-target="view-workflows">
+                    <i class="ph ph-kanban"></i>
+                    <span>Workflows</span>
+                </a>
+                <a href="#" class="nav-item" data-target="view-team">
+                    <i class="ph ph-users"></i>
+                    <span>Equipe</span>
+                </a>
+                <a href="#" class="nav-item" data-target="view-reports">
+                    <i class="ph ph-chart-line-up"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item" data-target="view-settings">
+                    <i class="ph ph-gear"></i>
+                    <span>Configurações</span>
+                </a>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar tarefas, clientes ou PCs...">
+                </div>
+                <div class="topbar-actions">
+                    <button class="icon-btn"><i class="ph ph-bell"></i></button>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin+Nerd&background=0D1117&color=00FF9D"
+                            alt="Profile">
+                    </div>
+                </div>
+            </header>
+            <!-- Views Container -->
+            <div class="views-container">
+                <!-- Dashboard View -->
+                <div id="view-dashboard" class="view-section active dashboard-wrapper">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="ph ph-wrench"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Em Manutenção</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="ph ph-check-circle"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Concluídos Hoje</span>
+                                <span class="stat-value">8</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon alert"><i class="ph ph-warning"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Aguardando Peça</span>
+                                <span class="stat-value">3</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-grid">
+                        <!-- Kanban Area -->
+                        <div class="kanban-area">
+                            <div class="section-header">
+                                <h2>Fluxo Ativo - Assistência</h2>
+                                <button class="btn-primary"><i class="ph ph-plus"></i> Nova Ordem</button>
+                            </div>
+                            <div class="kanban-board">
+                                <!-- Column 1 -->
+                                <div class="kanban-col" id="col-todo" ondrop="drop(event)"
+                                    ondragover="allowDrop(event)">
+                                    <div class="col-header">
+                                        <h3>Triagem <span class="badge">2</span></h3>
+                                    </div>
+                                    <div class="kanban-cards">
+                                        <div class="k-card" draggable="true" ondragstart="drag(event)" id="card1">
+                                            <div class="card-labels">
+                                                <span class="label l-blue">Console</span>
+                                                <span class="label l-red">Urgente</span>
+                                            </div>
+                                            <h4>PS5 - Superaquecimento</h4>
+                                            <p class="card-desc">Limpeza e troca de metal líquido.</p>
+                                            <div class="card-footer">
+                                                <div class="assignee"><img
+                                                        src="https://ui-avatars.com/api/?name=Alex&background=1f2937&color=fff"
+                                                        alt="Alex"></div>
+                                                <span class="date"><i class="ph ph-clock"></i> Hoje</span>
+                                            </div>
+                                        </div>
+                                        <div class="k-card" draggable="true" ondragstart="drag(event)" id="card2">
+                                            <div class="card-labels">
+                                                <span class="label l-green">PC Gamer</span>
+                                            </div>
+                                            <h4>Setup Watercooler Custom</h4>
+                                            <p class="card-desc">Montagem e cable management.</p>
+                                            <div class="card-footer">
+                                                <div class="assignee"><img
+                                                        src="https://ui-avatars.com/api/?name=Sam&background=1f2937&color=fff"
+                                                        alt="Sam"></div>
+                                                <span class="date"><i class="ph ph-clock"></i> Amanhã</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Column 2 -->
+                                <div class="kanban-col" id="col-progress" ondrop="drop(event)"
+                                    ondragover="allowDrop(event)">
+                                    <div class="col-header">
+                                        <h3>Em Reparo <span class="badge">1</span></h3>
+                                    </div>
+                                    <div class="kanban-cards">
+                                        <div class="k-card" draggable="true" ondragstart="drag(event)" id="card3">
+                                            <div class="card-labels">
+                                                <span class="label l-green">Notebook</span>
+                                            </div>
+                                            <h4>Troca de Tela Nitro 5</h4>
+                                            <p class="card-desc">Tela recebida, iniciando troca.</p>
+                                            <div class="card-footer">
+                                                <div class="assignee"><img
+                                                        src="https://ui-avatars.com/api/?name=Leo&background=1f2937&color=fff"
+                                                        alt="Leo"></div>
+                                                <span class="date"><i class="ph ph-clock"></i> Hoje</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Column 3 -->
+                                <div class="kanban-col" id="col-done" ondrop="drop(event)"
+                                    ondragover="allowDrop(event)">
+                                    <div class="col-header">
+                                        <h3>Testes Finais <span class="badge">0</span></h3>
+                                    </div>
+                                    <div class="kanban-cards">
+                                        <!-- Empty state dropzone -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Team Widget -->
+                        <div class="team-widget">
+                            <div class="section-header">
+                                <h2>Equipe Técnica</h2>
+                            </div>
+                            <div class="team-list">
+                                <div class="team-member">
+                                    <div class="member-avatar status-online">
+                                        <img src="https://ui-avatars.com/api/?name=Alex&background=1f2937&color=fff"
+                                            alt="Alex">
+                                    </div>
+                                    <div class="member-info">
+                                        <h4>Alex M.</h4>
+                                        <span>Espec. Consoles</span>
+                                    </div>
+                                </div>
+                                <div class="team-member">
+                                    <div class="member-avatar status-online">
+                                        <img src="https://ui-avatars.com/api/?name=Leo&background=1f2937&color=fff"
+                                            alt="Leo">
+                                    </div>
+                                    <div class="member-info">
+                                        <h4>Leo S.</h4>
+                                        <span>Hardware PC</span>
+                                    </div>
+                                </div>
+                                <div class="team-member">
+                                    <div class="member-avatar status-busy">
+                                        <img src="https://ui-avatars.com/api/?name=Sam&background=1f2937&color=fff"
+                                            alt="Sam">
+                                    </div>
+                                    <div class="member-info">
+                                        <h4>Sam T.</h4>
+                                        <span>Atendimento</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Workflows View -->
+                <div id="view-workflows" class="view-section dashboard-wrapper" style="display: none;">
+                    <div class="section-header">
+                        <h2>Gerenciamento Avançado de Fluxos</h2>
+                        <button class="btn-primary"><i class="ph ph-plus"></i> Novo Fluxo Personalizado</button>
+                    </div>
+                    <div class="workflows-grid">
+                        <div class="wf-card">
+                            <div class="wf-header">
+                                <i class="ph ph-desktop" style="color: var(--primary-blue); font-size: 2rem;"></i>
+                                <span class="status-badge s-active">Ativo</span>
+                            </div>
+                            <h3>Montagem de PC Gamer</h3>
+                            <p>Fluxo padrão para montagens completas, incluindo watercooler e cable management.</p>
+                            <div class="wf-progress">
+                                <div class="progress-bar">
+                                    <div class="fill" style="width: 75%;"></div>
+                                </div>
+                                <span>12 em andamento</span>
+                            </div>
+                        </div>
+                        <div class="wf-card">
+                            <div class="wf-header">
+                                <i class="ph ph-game-controller"
+                                    style="color: var(--primary-green); font-size: 2rem;"></i>
+                                <span class="status-badge s-active">Ativo</span>
+                            </div>
+                            <h3>Manutenção de Consoles</h3>
+                            <p>Limpeza, troca de pasta térmica e reparo de placa-mãe para PS5 e Xbox.</p>
+                            <div class="wf-progress">
+                                <div class="progress-bar">
+                                    <div class="fill" style="width: 40%;"></div>
+                                </div>
+                                <span>5 em andamento</span>
+                            </div>
+                        </div>
+                        <div class="wf-card">
+                            <div class="wf-header">
+                                <i class="ph ph-hard-drives" style="color: #f43f5e; font-size: 2rem;"></i>
+                                <span class="status-badge s-paused">Pausado</span>
+                            </div>
+                            <h3>Recuperação de Dados</h3>
+                            <p>Processo de backup e recuperação de HDs/SSDs danificados.</p>
+                            <div class="wf-progress">
+                                <div class="progress-bar">
+                                    <div class="fill" style="width: 0%;"></div>
+                                </div>
+                                <span>0 em andamento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Equipe View -->
+                <div id="view-team" class="view-section dashboard-wrapper" style="display: none;">
+                    <div class="section-header">
+                        <h2>Membros da Equipe</h2>
+                        <button class="btn-primary"><i class="ph ph-user-plus"></i> Adicionar Membro</button>
+                    </div>
+                    <div class="team-grid-view">
+                        <div class="team-member-card">
+                            <img src="https://ui-avatars.com/api/?name=Alex+M&background=1f2937&color=00FF9D"
+                                alt="Alex">
+                            <h3>Alex M.</h3>
+                            <span class="role">Especialista em Consoles</span>
+                            <div class="member-stats">
+                                <div><strong>45</strong><span>Reparos Mês</span></div>
+                                <div><strong>98%</strong><span>Avaliação</span></div>
+                            </div>
+                            <button class="btn-outline">Atribuir Tarefa</button>
+                        </div>
+                        <div class="team-member-card">
+                            <img src="https://ui-avatars.com/api/?name=Leo+S&background=1f2937&color=0ea5e9" alt="Leo">
+                            <h3>Leo S.</h3>
+                            <span class="role">Hardware PC</span>
+                            <div class="member-stats">
+                                <div><strong>32</strong><span>Reparos Mês</span></div>
+                                <div><strong>95%</strong><span>Avaliação</span></div>
+                            </div>
+                            <button class="btn-outline">Atribuir Tarefa</button>
+                        </div>
+                        <div class="team-member-card">
+                            <img src="https://ui-avatars.com/api/?name=Sam+T&background=1f2937&color=fff" alt="Sam">
+                            <h3>Sam T.</h3>
+                            <span class="role">Atendimento ao Cliente</span>
+                            <div class="member-stats">
+                                <div><strong>120</strong><span>Chamados</span></div>
+                                <div><strong>99%</strong><span>Avaliação</span></div>
+                            </div>
+                            <button class="btn-outline">Ver Histórico</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Relatórios View -->
+                <div id="view-reports" class="view-section dashboard-wrapper" style="display: none;">
+                    <div class="section-header">
+                        <h2>Relatórios e Desempenho</h2>
+                        <button class="btn-outline"><i class="ph ph-download-simple"></i> Exportar PDF</button>
+                    </div>
+                    <div class="reports-container">
+                        <div class="chart-card large">
+                            <h3>Faturamento Mensal (Simulado)</h3>
+                            <div class="simulated-chart">
+                                <div class="bar" style="height: 40%;" data-val="R$ 4k"><span>Jan</span></div>
+                                <div class="bar" style="height: 60%;" data-val="R$ 6k"><span>Fev</span></div>
+                                <div class="bar" style="height: 55%;" data-val="R$ 5.5k"><span>Mar</span></div>
+                                <div class="bar" style="height: 80%;" data-val="R$ 8k"><span>Abr</span></div>
+                                <div class="bar green-bar" style="height: 100%;" data-val="R$ 10k"><span>Mai</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reports-sidebar">
+                            <div class="chart-card">
+                                <h3>Serviços Populares</h3>
+                                <ul class="ranking-list">
+                                    <li><span>1. Montagem PC</span> <strong>45%</strong></li>
+                                    <li><span>2. Limpeza PS5</span> <strong>30%</strong></li>
+                                    <li><span>3. Troca Tela Note</span> <strong>15%</strong></li>
+                                    <li><span>4. Outros</span> <strong>10%</strong></li>
+                                </ul>
+                            </div>
+                            <div class="chart-card highlight-card">
+                                <h3>Meta do Mês</h3>
+                                <div class="circular-progress">
+                                    <h2>85%</h2>
+                                    <p>Quase lá!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Settings View -->
+                <div id="view-settings" class="view-section dashboard-wrapper" style="display: none;">
+                    <div class="section-header">
+                        <h2>Configurações do Sistema</h2>
+                        <button class="btn-primary"><i class="ph ph-floppy-disk"></i> Salvar Alterações</button>
+                    </div>
+
+                    <div class="settings-grid">
+
+                        <!-- Perfil -->
+                        <div class="settings-card">
+                            <h3><i class="ph ph-user"></i> Perfil e Conta</h3>
+                            <div class="settings-content">
+                                <div class="settings-row">
+                                    <div class="profile-pic-edit">
+                                        <img src="https://ui-avatars.com/api/?name=Admin+Nerd&background=0D1117&color=00FF9D"
+                                            alt="Profile">
+                                        <button class="btn-icon-small"><i class="ph ph-camera"></i></button>
+                                    </div>
+                                    <div class="input-group flex-1">
+                                        <label>Nome Completo</label>
+                                        <input type="text" class="custom-input" value="Admin Nerd">
+                                    </div>
+                                </div>
+                                <div class="input-group mt-1">
+                                    <label>E-mail de Acesso</label>
+                                    <input type="email" class="custom-input" value="admin@nerdzone.com.br">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Preferências da Loja -->
+                        <div class="settings-card">
+                            <h3><i class="ph ph-storefront"></i> Preferências da Loja</h3>
+                            <div class="settings-content">
+                                <div class="input-group">
+                                    <label>Nome Fantasia</label>
+                                    <input type="text" class="custom-input" value="Nerd_Zone Tech Store">
+                                </div>
+                                <div class="input-group mt-1">
+                                    <label>Moeda Padrão</label>
+                                    <select class="custom-select">
+                                        <option value="BRL">BRL (R$)</option>
+                                        <option value="USD">USD ($)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Notificações -->
+                        <div class="settings-card">
+                            <h3><i class="ph ph-bell-ringing"></i> Alertas e Notificações</h3>
+                            <div class="settings-content">
+                                <div class="toggle-row">
+                                    <div>
+                                        <h4>Novos Chamados</h4>
+                                        <p>Receba alertas de novos equipamentos</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-row mt-1">
+                                    <div>
+                                        <h4>Equipe Offline</h4>
+                                        <p>Alerta se faltarem técnicos ativos</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Aparência -->
+                        <div class="settings-card">
+                            <h3><i class="ph ph-palette"></i> Aparência e Temas</h3>
+                            <div class="settings-content theme-selector">
+                                <div class="theme-option active" data-theme="neon-green">
+                                    <div class="color-circle" style="background: #00FF9D;"></div>
+                                    <span>Neon Green (Dark)</span>
+                                </div>
+                                <div class="theme-option" data-theme="cyber-blue">
+                                    <div class="color-circle" style="background: #0ea5e9;"></div>
+                                    <span>Cyber Blue (Dark)</span>
+                                </div>
+                                <div class="theme-option" data-theme="arcade-red">
+                                    <div class="color-circle" style="background: #f43f5e;"></div>
+                                    <span>Arcade Red (Dark)</span>
+                                </div>
+                                <div class="theme-option" data-theme="light-mode">
+                                    <div class="color-circle" style="background: #e5e7eb; border: 1px solid #9ca3af;">
+                                    </div>
+                                    <span>Clean White (Light)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Views Container -->
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
